@@ -1,0 +1,112 @@
+<!-- Shopping Cart Section -->
+<div class="container my-5">
+  <h2 class="mb-4">Shopping Cart</h2>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table text-center">
+        <!-- Add text-center class here -->
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of productDetails?.products">
+            <td>
+              <img
+                [src]="product?.product?.imageCover"
+                alt="Product 1"
+                class="img-thumbnail"
+                style="width: 100px"
+              />
+            </td>
+            <td>
+              {{ product?.price | currency : "EGP" : "symbol" : "1.2-2" }}
+            </td>
+            <td>
+              <div>
+                <input
+                  type="number"
+                  class="form-control w-50 mx-auto row"
+                  [value]="product?.count"
+                  min="1"
+                  max="20"
+                  #productCountInput
+                />
+              </div>
+            </td>
+            <td>
+              {{
+                product?.price * product?.count
+                  | currency : "EGP" : "symbol" : "1.2-2"
+              }}
+            </td>
+            <td>
+              <button
+                (click)="
+                  updateCartProductQuantity(
+                    product?.product?._id,
+                    +productCountInput.value
+                  )
+                "
+                class="update btn btn-outline-success"
+                title="Update {{ product?.product?.title }} Quantity"
+              >
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+              </button>
+              |
+              <button
+                (click)="BridgeToRemoveEndPoint(product?.product?._id)"
+                title="remove {{ product?.product?.title }}"
+                class="remove btn btn-outline-danger"
+              >
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <div class="card custom-card">
+        <div class="card-header custom-card-header">Cart Summary</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-center">
+            <h4>
+              Total:
+              <span class="text-muted ms-4">
+                {{
+                  productDetails?.totalCartPrice
+                    | currency : "EGP" : "symbol" : "1.2-2"
+                }}
+              </span>
+            </h4>
+          </li>
+        </ul>
+        <div class="card-body my-0">
+          <a
+           routerLink="/checkOut" 
+            class="btn btn-outline-primary text-center w-100 mx-auto fs-5 fw-bold "
+          >
+            <i class="fa fa-credit-card" aria-hidden="true"></i>
+            online Payment
+          </a>
+        </div>
+
+        <div class="card-body my-0">
+          <a
+            href="#"
+            class="btn btn-outline-info text-center w-100 mx-auto fs-5 fw-bold "
+          >
+            <i class="fa fa-wallet" aria-hidden="true"></i>
+            Cash Payment
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

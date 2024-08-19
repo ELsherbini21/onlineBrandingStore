@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-sm navbar- bg-light">
+  <span
+    class="navbar-brand mx-3 d-flex justify-content-center align-items-center"
+  >
+    <img id="logo" src="../../../assets/images/talabatLogo.jpg" />
+    <span class="fw-bold fs-3 text-muted ms-2">Talabat </span>
+  </span>
+  <button
+    class="navbar-toggler d-lg-none"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#collapsibleNavId"
+    aria-controls="collapsibleNavId"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  ></button>
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav me-auto mt-2 mt-lg-0 mx-3">
+      <li *ngIf="isLogin" class="nav-item">
+        <a class="nav-link" routerLink="products">Products </a>
+      </li>
+      <li *ngIf="isLogin" class="nav-item">
+        <a class="nav-link position-relative" routerLink="cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span
+            class="badge bg-dark-subtle text-dark-emphasis position-absolute"
+          >
+            {{ numberOfCart }}</span
+          >
+        </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ms-auto mt-2 mt-lg-0 mx-5">
+      <li *ngIf="isLogin == false" class="nav-item">
+        <a class="nav-link" routerLink="login">Login</a>
+      </li>
+
+      <li *ngIf="isLogin == false" class="nav-item">
+        <a class="nav-link" routerLink="register">Register</a>
+      </li>
+
+      <li *ngIf="isLogin == true" class="nav-item">
+        <a (click)="logOut()" class="nav-link" href="">logOut</a>
+      </li>
+
+      <li *ngIf="isLogin == true" class="nav-item">
+        <a class="nav-link" routerLink="settings"
+          ><i class="fa-solid fa-gear"></i
+        ></a>
+      </li>
+    </ul>
+  </div>
+</nav>

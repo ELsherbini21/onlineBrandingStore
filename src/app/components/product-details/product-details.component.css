@@ -1,0 +1,39 @@
+/* .product-image {
+  max-width: 60%;
+  max-height: 200px;
+} */
+.product-info {
+  background-color: #f8f9fa; /* Light background color */
+  padding: 20px; /* Add padding */
+  border-radius: 10px; /* Round the corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+.price {
+  font-size: 1.5em; /* Adjust the font size */
+  color: #ff5722; /* Change the text color */
+  font-weight: bold; /* Make the text bold */
+  background-color: #f0f0f0; /* Add a background color */
+  padding: 10px; /* Add some padding */
+  border-radius: 5px; /* Round the corners */
+  display: inline-block; /* Make the element inline-block */
+}
+.quantity-input {
+  width: 60px;
+}
+.custom-yellow {
+  color: #ffc107 !important; /* Bootstrap's warning color */
+}
+.carousel-image {
+  height: 350px; /* Adjust the height as needed */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  border-radius: 10px; /* Add rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  margin: 10px; /* Add some margin around the images */
+}
+
+.slider {
+  background-color: #f8f9fa; /* Light background color for the slider */
+  padding: 20px; /* Add padding around the slider */
+  border-radius: 10px; /* Round the corners of the slider */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}

@@ -1,0 +1,28 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f5f7;
+}
+
+.error-number {
+  font-size: 192px;
+  color: #4caf50; /* Green color */
+}
+
+.error-message {
+  font-size: 48px;
+}
+
+
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  color: white;
+  background: black;
+  text-align: center;
+  padding: 0.5em 0;
+}

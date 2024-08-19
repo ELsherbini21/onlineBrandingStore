@@ -1,0 +1,88 @@
+<div class="w-75 mx-auto py-4">
+  <h1
+    class="badge bg-primary fw-bold fs-3 text-center d-flex justify-content-center w-50 mx-auto mb-4"
+  >
+    Login
+  </h1>
+
+  <div *ngIf="apiError.length > 0" class="alert alert-danger">
+    {{ apiError }}
+  </div>
+
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit(loginForm)"
+    class="w-75 mx-auto form-group"
+    method="post"
+  >
+    <!-- email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">email</label>
+      <input
+        formControlName="email"
+        type="email"
+        name="email"
+        id="email"
+        class="form-control"
+        placeholder="Enter you email "
+        aria-describedby="helpId"
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          loginForm.get('email')?.errors && loginForm.get('email')?.touched
+        "
+      >
+        <small
+          *ngIf="hasError('email', 'required')"
+          id="helsmallId"
+          class="text-danger"
+          >email is required</small
+        >
+        <small
+          *ngIf="hasError('email', 'email')"
+          id="helpId"
+          class="text-danger"
+          >Invalid email Sir
+        </small>
+      </div>
+    </div>
+
+    <!-- Passwrod -->
+    <div class="mb-3">
+      <label for="password" class="form-label">password</label>
+      <input
+        formControlName="password"
+        type="password"
+        name="password"
+        id="password"
+        class="form-control"
+        placeholder="Enter you password "
+        aria-describedby="helpId"
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          loginForm.get('password')?.errors &&
+          loginForm.get('password')?.touched
+        "
+      >
+        <small
+          *ngIf="hasError('password', 'required')"
+          id="helsmallId"
+          class="text-danger"
+          >password is required</small
+        >
+      </div>
+    </div>
+
+    <button
+    [disabled]="loginForm.invalid "
+    class="btn btn-primary w-25 mt-3 ms-4"
+    type="submit"
+  >
+  Log In
+  </button>
+  
+  </form>
+</div>

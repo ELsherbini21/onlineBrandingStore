@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-md-6">
+      <div class="slider container h-50">
+        <owl-carousel-o [options]="customOptions">
+          <ng-container *ngFor="let img of product.images">
+            <ng-template carouselSlide>
+              <img class="carousel-image" [src]="img" />
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+    </div>
+
+    <div class="col-md-6 product-info">
+      <h2>{{ product.title }}</h2>
+      <p>{{ product.description }}</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="price">
+          {{ product.price | currency : "EGP" : "symbol" : "1.2-2" }}
+        </p>
+        <span class="fs-2">
+          {{ product.ratingsAverage }}
+          <i class="fa-solid fa-star custom-yellow"></i>
+        </span>
+      </div>
+      <div class="row me-auto">
+        <button
+          class="btn btn-success w-75 mx-auto"
+          (click)="addToCart(product.id)"
+        >
+          <i class="fa-regular fa-plus"></i>
+          <span class="fw-bolder ms-2"> Add to cart </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

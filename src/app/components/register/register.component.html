@@ -1,0 +1,131 @@
+<div class="w-75 mx-auto py-4">
+  <h1
+    class="badge bg-primary fw-bold fs-3 text-center d-flex justify-content-center w-50 mx-auto mb-4"
+  >
+    Register
+  </h1>
+
+  <div *ngIf="apiError.length > 0" class="alert alert-danger">
+    {{ apiError }}
+  </div>
+
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit(registerForm)"
+    class="w-75 mx-auto"
+    method="post"
+  >
+    <!-- Full Name  -->
+    <div class="form-group my-3">
+      <label for="name" class="form-label"> Display Name : </label>
+      <input formControlName="name" id="name" class="form-control" />
+      <div
+        *ngIf="
+          registerForm.get('name')?.errors && registerForm.get('name')?.touched
+        "
+        class="text-white bg-danger"
+      >
+        <p *ngIf="hasError('name', 'required')">Name is required</p>
+        <p *ngIf="hasError('name', 'minlength')">minimum chars are 4</p>
+        <p *ngIf="hasError('name', 'maxlength')">Maximum length is 10</p>
+      </div>
+    </div>
+
+    <!-- email -->
+    <div class="form-group my-3">
+      <label for="email" class="form-label"> email : </label>
+      <input formControlName="email" id="email" class="form-control" />
+      <div
+        *ngIf="
+          registerForm.get('email')?.errors &&
+          registerForm.get('email')?.touched
+        "
+        class="text-white bg-danger"
+      >
+        <p *ngIf="hasError('email', 'required')">email is required</p>
+        <p *ngIf="hasError('email', 'email')">This email is Invalid</p>
+      </div>
+    </div>
+
+    <!-- Phone -->
+    <div class="form-group my-3">
+      <label for="phone" class="form-label"> phone : </label>
+      <input formControlName="phone" id="phone" class="form-control" />
+      <div
+        *ngIf="
+          registerForm.get('phone')?.errors &&
+          registerForm.get('phone')?.touched
+        "
+        class="text-white bg-danger"
+      >
+        <p *ngIf="hasError('phone', 'required')">phone is required</p>
+        <p *ngIf="hasError('phone', 'pattern')">
+          Egypt Phone Number must start with 010 Or 011 Or 012 Or 015 . And must
+          bet 11 number .
+        </p>
+      </div>
+    </div>
+
+    <!-- password -->
+    <div class="form-group my-3">
+      <label for="password" class="form-label"> password : </label>
+      <input
+        formControlName="password"
+        id="password"
+        class="form-control"
+        type="password"
+      />
+      <div
+        *ngIf="
+          registerForm.get('password')?.errors &&
+          registerForm.get('password')?.touched
+        "
+        class="text-white bg-danger"
+      >
+        <p *ngIf="hasError('password', 'required')">password is required</p>
+        <p *ngIf="hasError('password', 'pattern')">
+          password must be between 8 and 20 characters long and include at least
+          one uppercase letter, one lowercase letter, one digit, and one special
+          character (#?!$ %^&*-).
+        </p>
+      </div>
+    </div>
+
+    <!-- repassword -->
+    <div class="form-group my-3">
+      <label for="rePassword" class="form-label"> rePassword : </label>
+      <input
+        formControlName="rePassword"
+        id="rePassword"
+        class="form-control"
+        type="password"
+      />
+      <div
+        *ngIf="
+          registerForm.get('rePassword')?.errors &&
+          registerForm.get('rePassword')?.touched
+        "
+        class="text-white bg-danger"
+      >
+        <p *ngIf="hasError('rePassword', 'required')">rePassword is required</p>
+        <p *ngIf="hasError('rePassword', 'passwordMatch')">
+          rePassword doesn't match with password
+        </p>
+
+        <p *ngIf="hasError('rePassword', 'pattern')">
+          rePassword must be between 8 and 20 characters long and include at
+          least one uppercase letter, one lowercase letter, one digit, and one
+          special character (#?!$ %^&*-).
+        </p>
+      </div>
+    </div>
+
+    <button
+      [disabled]="registerForm.invalid || isLoading"
+      class="btn btn-primary w-25 mt-3 ms-4"
+      type="submit"
+    >
+      Register
+    </button>
+  </form>
+</div>

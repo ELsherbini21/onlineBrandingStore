@@ -1,0 +1,99 @@
+<p>check-out works!</p>
+
+<div class="w-75 mx-auto py-4">
+  <h1
+    class="badge bg-primary fw-bold fs-3 text-center d-flex justify-content-center w-50 mx-auto mb-4"
+  >
+    Shipping Address Form
+  </h1>
+
+  <form
+    [formGroup]="shippingAddressForm"
+    (ngSubmit)="onSubmit(shippingAddressForm)"
+    class="w-75 mx-auto form-group"
+    method="post"
+  >
+    <!-- details -->
+    <div class="mb-3">
+      <label for="details" class="form-label">details</label>
+      <input
+        formControlName="details"
+        type="details"
+        name="details"
+        id="details"
+        class="form-control"
+        placeholder="Enter you details "
+        aria-describedby="helpId"
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          shippingAddressForm.get('details')?.errors &&
+          shippingAddressForm.get('details')?.touched
+        "
+      >
+        <small
+          *ngIf="hasError('details', 'required')"
+          id="helsmallId"
+          class="text-danger"
+          >details is required</small
+        >
+      </div>
+    </div>
+
+    <!-- Phone -->
+    <div class="form-group my-3">
+      <label for="phone" class="form-label"> phone : </label>
+      <input formControlName="phone" id="phone" class="form-control" />
+      <div
+        *ngIf="
+          shippingAddressForm.get('phone')?.errors &&
+          shippingAddressForm.get('phone')?.touched
+        "
+        class="text-white bg-danger"
+      >
+        <p *ngIf="hasError('phone', 'required')">phone is required</p>
+        <p *ngIf="hasError('phone', 'pattern')">
+          Egypt Phone Number must start with 010 Or 011 Or 012 Or 015 . And must
+          bet 11 number .
+        </p>
+      </div>
+    </div>
+
+    <!-- city -->
+    <div class="mb-3">
+      <label for="city" class="form-label">city</label>
+      <input
+        formControlName="city"
+        type="city"
+        name="city"
+        id="city"
+        class="form-control"
+        placeholder="Enter you city "
+        aria-describedby="helpId"
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          shippingAddressForm.get('city')?.errors &&
+          shippingAddressForm.get('city')?.touched
+        "
+      >
+        <small
+          *ngIf="hasError('city', 'required')"
+          id="helsmallId"
+          class="text-danger"
+          >city is required</small
+        >
+      </div>
+    </div>
+
+    <button
+      [disabled]="shippingAddressForm.invalid"
+      class="btn btn-success w-50 mt-3 ms-4"
+      type="submit"
+    >
+      Confirm Payment Process
+    </button>
+  </form>
+</div>
